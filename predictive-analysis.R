@@ -14,8 +14,10 @@ post(iris.df, file = "")
 #시계열 분석
 install.packages("WDI")
 library(WDI)
-gdp <- WDI(country = "KR",start = 1960, end = 2017)
-names(gpd) <- 
+data("WDI_data")
+df <- as.data.frame(WDI_data$series)
+df
+gdp <- WDI(country = "KR", indicator = 'NY.GDP.PCAP.CD', start = 1960, end = 2002)
 kr <- gdp$PerCapGDP[gdp$Country == 'Korea, Rep.']
 kr <- ts(kr, start = min(gdp$Year, end = max(gdp$year)))
 install.packages("forecast")
